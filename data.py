@@ -1,4 +1,19 @@
-question_data = [
+import requests
+
+parameters = {
+    "amount": 10,
+    "type": "boolean",
+}
+url = "https://opentdb.com/api.php"
+
+response = requests.get(url, params=parameters)
+response.raise_for_status()
+data = response.json()
+question_data = data["results"]
+#print(question_data)
+
+
+""" question_data = [
     {"text": "A slug's blood is green.", "answer": "True"},
     {"text": "The loudest animal is the African Elephant.", "answer": "False"},
     {"text": "Approximately one quarter of human bones are in the feet.", "answer": "True"},
@@ -13,7 +28,7 @@ question_data = [
     {"text": "Buzz Aldrin's mother's maiden name was 'Moon'.", "answer": "True"},
     {"text": "No piece of square dry paper can be folded in half more than 7 times.", "answer": "False"},
     {"text": "A few ounces of chocolate can to kill a small dog.", "answer": "True"}
-]
+] """
 
 
 
